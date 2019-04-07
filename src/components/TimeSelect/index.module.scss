@@ -1,0 +1,55 @@
+.timeSelect{
+    display: inline-block;
+    height: 30px;
+    padding:0 10px 20px 10px;
+}
+.shortBox {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 10px;
+    margin-bottom: 10px;
+    background: #d8d8d8;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #fff;
+    cursor: pointer;
+
+    .valueText {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        left: -1px;
+        top: 15px;
+        width: 0;
+        padding: 0 10px;
+        margin: 0 -10px;
+        height: 15px;
+        line-height:15px;
+        white-space: nowrap;
+        text-align: center;
+        user-select:none;
+    }
+
+    .valueTextLast {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        right: -1px;
+        top: 15px;
+        width: 0;
+        padding: 0 10px;
+        margin: 0 -10px;
+        height: 15px;
+        line-height:15px;
+        white-space: nowrap;
+        text-align: center;
+        user-select:none;
+        
+    }
+}
+
+.addBlueBox {
+    background: #73AE77; 
+    border-left: 2px solid #73AE77;
+    border-right: 2px solid #73AE77;
+  }
