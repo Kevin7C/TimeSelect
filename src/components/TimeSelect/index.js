@@ -66,6 +66,25 @@ export default class TimeSelect extends React.PureComponent {
         };
         this.stepList = [];// 记录每个时间块的位置
     }
+    
+    static getDerivedStateFromProps(props,state){
+        if(props.selectedTime.length){
+            for (const obj of props.selectedTime) {
+                const { data } = state;
+                let selectedIndex = data.findIndex(item => item.startTime === obj.startTime);
+                if (selectedIndex > -1) {
+                    while (true) {
+                        data[selectedIndex].selected = true;
+                        if (data[selectedIndex].endTime === obj.endTime) {
+                            break;
+                        }
+                        selectedIndex++;
+                    }
+                }
+            }
+        }
+        return state
+    }
 
     componentDidMount() {
         const { startTime, endTime } = this.props;
@@ -84,24 +103,6 @@ export default class TimeSelect extends React.PureComponent {
                 index: endTime - startTime - 1 - i
             })
             i++
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (this.props.selectedTime !== nextProps.selectedTime) {
-            for (const obj of nextProps.selectedTime) {
-                const { data } = this.state;
-                let selectedIndex = data.findIndex(item => item.startTime === obj.startTime);
-                if (selectedIndex > -1) {
-                    while (true) {
-                        data[selectedIndex].selected = true;
-                        if (data[selectedIndex].endTime === obj.endTime) {
-                            break;
-                        }
-                        selectedIndex++;
-                    }
-                }
-            }
         }
     }
 
